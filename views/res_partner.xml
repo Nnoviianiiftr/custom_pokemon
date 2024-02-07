@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <record id="partner_form_inherited" model="ir.ui.view">
+            <field name="name">partner.view.form.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form//sheet" position="before">
+                    <header>
+                        <button name="get_pokemon" string="Get Pokemon" type="object" invisible="not is_company"/> 
+                    </header>
+                </xpath>
+                <xpath expr="//page[@name='geo_location']" position="after">
+                    <page name="view_pokemon" string="Pokémon" invisible="not is_company">
+                        <group string="Pokemon" name="pokemon" priority="1">
+                            <field name="pokemon_name"/>
+                            <field name="pokemon_id"/>
+                        </group>
+                        <group string="Stats" name="pokemon_stats" priority="1">
+                            <field name="stats_info"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
